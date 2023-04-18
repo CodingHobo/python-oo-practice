@@ -1,3 +1,5 @@
+import random
+
 class WordFinder:
     """Word Finder: finds random words from a dictionary."""
 
@@ -27,4 +29,4 @@ class WordFinder:
 
     def find_random_words(self):
         """find and return random word form converted list"""
-        return random(self.converted_list)
+        return random.choice(self.converted_list)
