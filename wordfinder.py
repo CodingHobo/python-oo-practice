@@ -1,12 +1,7 @@
 import random
 
 class WordFinder:
-    """Word Finder: finds random words from a dictionary."""
-
-    """read file line by line, return word, add word to list
-    of already-read words, if nex towrk is in that list, read another one
-    acces words /Users/student/words.txt
-    prints out “[num-of-words-read] words read”
+    """Word Finder: finds random words from a dictionary.
 
     >>> wf = WordFinder("/usr/share/dict/words")
     235976 words read
@@ -15,18 +10,35 @@ class WordFinder:
 
 
     def __init__(self, file_of_words):
-        self.file_of_words = file_of_words
+        """Open the file and read it ; print the number of words read and
+        convert the file to a list of words"""
         self.word_file = open(file_of_words)
-        self.converted_list = self.convert_word_file_to_list(self.word_file)
-        print(f"{len(self.converted_list)} words read")
+
+        self.list_of_words = self.convert_word_file_to_list(self.word_file)
+
+        print(f"{len(self.list_of_words)} words read")
 
     def convert_word_file_to_list(self, word_file):
-        """convert self.word_file to list"""
-        list_of_words = []
-        for word in word_file:
-            list_of_words.append(word.strip())
-        return list_of_words
+        """Convert the self.word_file to list of words with whitespace and line
+        breaks removed"""
+        return [word.strip() for word in word_file]
 
     def find_random_words(self):
-        """find and return random word form converted list"""
-        return random.choice(self.converted_list)
+        """Find and return a random word from the list_of_words"""
+        return random.choice(self.list_of_words)
+
+class SpecialWordFinder(WordFinder):
+    """Accept a file of words and return a word that is not a space or
+    in a #comment"""
+
+    def __init__(self, file_of_words):
+        """Inherit the initialized variables from the parent class"""
+        super().__init__(file_of_words)
+
+    def special_word():
+        
+        "insert method to strip symbols"super().find_random_words()
+
+
+
+
